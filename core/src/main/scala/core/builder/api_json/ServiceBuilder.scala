@@ -512,7 +512,8 @@ case class ServiceBuilder(
         default = internal.default,
         minimum = internal.minimum,
         maximum = internal.maximum,
-        example = internal.example
+        example = internal.example,
+        attributes = Some(internal.attributes.map { AttributeBuilder(_) })
       )
     }
 

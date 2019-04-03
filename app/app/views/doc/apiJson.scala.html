@@ -291,7 +291,8 @@
       "default": <em>value (optional)</em>,
       "example": <em>string (optional)</em>,
       "minimum": <em>long (optional)</em>,
-      "maximum": <em>long (optional)</em>
+      "maximum": <em>long (optional)</em>,
+      "attributes": <em>JSON Array of <a href="#attribute">Attribute</a> (optional)</em>
     }
     </pre>
 
@@ -307,6 +308,7 @@
       <li><em>minimum</em> @minimumInfo("parameter")</li>
       <li><em>maximum</em> @maximumInfo("parameter")</li>
       <li><em>deprecation</em> JSON Object that indicates that this enum is deprecated.</li>
+      <li><em>attributes</em> JSON array defining additional meta data about this body for use by generators. See <a href="#attribute">Attribute</a></li>
     </ul>
 
   </p>

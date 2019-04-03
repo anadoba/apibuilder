@@ -284,7 +284,8 @@ case class InternalParameterForm(
   example: Option[String] = None,
   minimum: Option[Long] = None,
   maximum: Option[Long] = None,
-  warnings: Seq[String] = Seq.empty
+  warnings: Seq[String] = Seq.empty,
+  attributes: Seq[InternalAttributeForm] = Nil
 )
 
 case class InternalBodyForm(
@@ -833,6 +834,7 @@ object InternalParameterForm {
       minimum = JsonUtil.asOptLong(json \ "minimum"),
       maximum = JsonUtil.asOptLong(json \ "maximum"),
       example = JsonUtil.asOptString(json \ "example"),
+      attributes = InternalAttributeForm.attributesFromJson((json \ "attributes").asOpt[JsArray]),
       warnings = JsonUtil.validate(
         json,
         strings = Seq("name"),
@@ -841,7 +843,8 @@ object InternalParameterForm {
         optionalObjects = Seq("deprecation"),
         optionalBooleans = Seq("required"),
         optionalNumbers = Seq("minimum", "maximum"),
-        optionalAnys = Seq("default")
+        optionalAnys = Seq("default"),
+        optionalArraysOfObjects = Seq("attributes")
       )
     )
   }
